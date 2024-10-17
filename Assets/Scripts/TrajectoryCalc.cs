@@ -9,7 +9,7 @@ public class TrajectoryCalc : MonoBehaviour
     [SerializeField] GameObject item;
     [SerializeField] float initialVelocity;
     [SerializeField] float angle;
-    [SerializeField] TextMeshProUGUI timeDisplay, velDisplay, angleDisplay, distanceDisplay;
+    [SerializeField] TextMeshProUGUI timeDisplay, velDisplay, angleDisplay, distanceDisplay, textDisplay;
     public bool isPressed;
     void Update()
     {
@@ -27,6 +27,7 @@ public class TrajectoryCalc : MonoBehaviour
         }
         angleDisplay.SetText(angle + " θ");
         velDisplay.SetText("" + initialVelocity + " m/s");
+        textDisplay.SetText("Initial Velocity: 15" + "     Angle: 32");
     }
     public void LaunchItem(GameObject obj, float initialVelocity, float angle)
     {

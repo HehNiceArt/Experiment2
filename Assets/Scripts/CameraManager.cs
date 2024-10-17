@@ -5,36 +5,47 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    public CinemachineVirtualCamera VirtualCamera1, VirtualCamera2;
-    private bool isCamera1Active = true;  // Tracks the active camera
+    public CinemachineVirtualCamera VirtualCamera1, VirtualCamera2, VirtualCamera3;
+    private int activeCameraIndex = 0; 
+
     private void Start()
     {
-        VirtualCamera1.Priority = 10;
-        VirtualCamera2.Priority = 5;
+        SetCameraPriorities(0); 
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            SwitchCameras();
+            CycleCameras();
         }
     }
 
-    void SwitchCameras()
+    void CycleCameras()
     {
-        if (isCamera1Active)
-        {
-            VirtualCamera1.Priority = 5;
-            VirtualCamera2.Priority = 10;
-        }
-        else
+        activeCameraIndex = (activeCameraIndex + 1) % 3;
+        SetCameraPriorities(activeCameraIndex);
+    }
+
+    void SetCameraPriorities(int index)
+    {
+        if (index == 0)
         {
             VirtualCamera1.Priority = 10;
             VirtualCamera2.Priority = 5;
+            VirtualCamera3.Priority = 2;
         }
-
-        isCamera1Active = !isCamera1Active; 
+        else if (index == 1)
+        {
+            VirtualCamera1.Priority = 5;
+            VirtualCamera2.Priority = 10;
+            VirtualCamera3.Priority = 2;
+        }
+        else if (index == 2)
+        {
+            VirtualCamera1.Priority = 2;
+            VirtualCamera2.Priority = 5;
+            VirtualCamera3.Priority = 10;
+        }
     }
-
 }
