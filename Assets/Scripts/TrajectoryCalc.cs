@@ -25,8 +25,8 @@ public class TrajectoryCalc : MonoBehaviour
             distanceDisplay.SetText("Distance: " + Mathf.Abs(dist) + " m");
 
         }
-        angleDisplay.SetText("Angle:" + " 32°");
-        velDisplay.SetText("Speed:" + " 15 m/s");
+        angleDisplay.SetText("Angle: " + angle + " θ");
+        velDisplay.SetText("Speed: " + initialVelocity + " m/s");
     }
     public void LaunchItem(GameObject obj, float initialVelocity, float angle)
     {
